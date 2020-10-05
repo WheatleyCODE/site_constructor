@@ -1,8 +1,8 @@
 import {Block} from './classes/blocks'
+import {TitleBlock, TextBlock, ColumnsBlock, ImageBlock} from './classes/blocks'
 
 export const model = [
-  new Block(
-    'title',
+  new TitleBlock(
     'Конструктор сайтов на JS',
     {
       tag: 'h2',
@@ -16,8 +16,7 @@ export const model = [
     }
   ),
 
-  new Block(
-    'text',
+  new TextBlock(
     'Текст, да? Точно. Тогда ладно.',
     {
       styles: {
@@ -31,8 +30,7 @@ export const model = [
     }
   ),
 
-  new Block(
-    'columns', 
+  new ColumnsBlock(
     [
       'Первый блок',
       'Второй блок',
@@ -60,8 +58,7 @@ export const model = [
     }
   ),
 
-  new Block(
-    'image',
+  new ImageBlock(
     'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg',
     {
       styles: {

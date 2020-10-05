@@ -117,83 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"classes/blocks.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Block = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Block = function Block(type, value, options) {
-  _classCallCheck(this, Block);
-
-  this.type = type;
-  this.value = value;
-  this.options = options;
-};
-
-exports.Block = Block;
-},{}],"model.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.model = void 0;
-
-var _blocks = require("./classes/blocks");
-
-var model = [new _blocks.Block('title', 'Конструктор сайтов на JS', {
-  tag: 'h2',
-  styles: {
-    // Инлайн стили
-    background: 'linear-gradient(to right, #ff0099, #493240)',
-    color: '#fff',
-    padding: '1.5rem',
-    'text-align': 'center'
-  }
-}), new _blocks.Block('text', 'Текст, да? Точно. Тогда ладно.', {
-  styles: {
-    // Инлайн стили
-    'background-color': '#fff',
-    color: '#000',
-    padding: '1.1rem',
-    border: '1px solid black',
-    'text-align': 'center'
-  }
-}), new _blocks.Block('columns', ['Первый блок', 'Второй блок', 'Третий блок', 'Четвертый блок'], {
-  styles: {
-    row: {
-      // Инлайн стили
-      'background-color': '#fff',
-      color: '#000',
-      padding: '5px',
-      height: '200px',
-      border: '1px solid black',
-      'text-align': 'center',
-      margin: '20px'
-    },
-    col: {
-      'background-color': '#DEDEDE',
-      margin: '5px',
-      'border-radius': '5px'
-    }
-  }
-}), new _blocks.Block('image', 'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg', {
-  styles: {
-    'background-color': '#fff',
-    border: '1px solid black',
-    'text-align': 'center',
-    display: 'flex',
-    'justify-content': 'center',
-    padding: '20px'
-  }
-})];
-exports.model = model;
-},{"./classes/blocks":"classes/blocks.js"}],"utils.js":[function(require,module,exports) {
+})({"utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -230,48 +154,216 @@ function ObjToCss() {
 
   return Object.keys(styles).map(toString).join(';');
 }
-},{}],"templates.js":[function(require,module,exports) {
+},{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.templates = void 0;
+exports.ImageBlock = exports.ColumnsBlock = exports.TextBlock = exports.TitleBlock = exports.Block = void 0;
 
-var _utils = require("./utils");
+var _utils = require("../utils");
 
-function title(block) {
-  var _block$options = block.options,
-      _block$options$tag = _block$options.tag,
-      tag = _block$options$tag === void 0 ? 'h1' : _block$options$tag,
-      styles = _block$options.styles;
-  return (0, _utils.row)((0, _utils.col)("<".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), (0, _utils.ObjToCss)(styles));
-}
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function text(block) {
-  return (0, _utils.row)((0, _utils.col)("<p>".concat(block.value, "</p>")), (0, _utils.ObjToCss)(block.options.styles));
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function columns(block) {
-  var html = block.value.map(function (value) {
-    return (0, _utils.col)("<p>".concat(value, "</p>"), (0, _utils.ObjToCss)(block.options.styles.col));
-  });
-  return (0, _utils.row)(html.join(' '), (0, _utils.ObjToCss)(block.options.styles.row));
-}
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function image(block) {
-  console.log(block.value);
-  return (0, _utils.row)("<img src=\"".concat(block.value, "\" />"), (0, _utils.ObjToCss)(block.options.styles));
-}
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-var templates = {
-  title: title,
-  text: text,
-  columns: columns,
-  image: image
-};
-exports.templates = templates;
-},{"./utils":"utils.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Block = /*#__PURE__*/function () {
+  function Block(value, options) {
+    _classCallCheck(this, Block);
+
+    this.value = value;
+    this.options = options;
+  }
+
+  _createClass(Block, [{
+    key: "toHTML",
+    value: function toHTML() {
+      throw new Error('Метод toHTML должен быть реализован!');
+    }
+  }]);
+
+  return Block;
+}();
+
+exports.Block = Block;
+
+var TitleBlock = /*#__PURE__*/function (_Block) {
+  _inherits(TitleBlock, _Block);
+
+  var _super = _createSuper(TitleBlock);
+
+  function TitleBlock(value, options) {
+    _classCallCheck(this, TitleBlock);
+
+    return _super.call(this, value, options);
+  }
+
+  _createClass(TitleBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var _this$options = this.options,
+          _this$options$tag = _this$options.tag,
+          tag = _this$options$tag === void 0 ? 'h1' : _this$options$tag,
+          styles = _this$options.styles;
+      return (0, _utils.row)((0, _utils.col)("<".concat(tag, ">").concat(this.value, "</").concat(tag, ">")), (0, _utils.ObjToCss)(styles));
+    }
+  }]);
+
+  return TitleBlock;
+}(Block);
+
+exports.TitleBlock = TitleBlock;
+
+var TextBlock = /*#__PURE__*/function (_Block2) {
+  _inherits(TextBlock, _Block2);
+
+  var _super2 = _createSuper(TextBlock);
+
+  function TextBlock(value, options) {
+    _classCallCheck(this, TextBlock);
+
+    return _super2.call(this, value, options);
+  }
+
+  _createClass(TextBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      return (0, _utils.row)((0, _utils.col)("<p>".concat(this.value, "</p>")), (0, _utils.ObjToCss)(this.options.styles));
+    }
+  }]);
+
+  return TextBlock;
+}(Block);
+
+exports.TextBlock = TextBlock;
+
+var ColumnsBlock = /*#__PURE__*/function (_Block3) {
+  _inherits(ColumnsBlock, _Block3);
+
+  var _super3 = _createSuper(ColumnsBlock);
+
+  function ColumnsBlock(value, options) {
+    _classCallCheck(this, ColumnsBlock);
+
+    return _super3.call(this, value, options);
+  }
+
+  _createClass(ColumnsBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var _this = this;
+
+      var html = this.value.map(function (value) {
+        return (0, _utils.col)("<p>".concat(value, "</p>"), (0, _utils.ObjToCss)(_this.options.styles.col));
+      });
+      return (0, _utils.row)(html.join(' '), (0, _utils.ObjToCss)(this.options.styles.row));
+    }
+  }]);
+
+  return ColumnsBlock;
+}(Block);
+
+exports.ColumnsBlock = ColumnsBlock;
+
+var ImageBlock = /*#__PURE__*/function (_Block4) {
+  _inherits(ImageBlock, _Block4);
+
+  var _super4 = _createSuper(ImageBlock);
+
+  function ImageBlock(value, options) {
+    _classCallCheck(this, ImageBlock);
+
+    return _super4.call(this, value, options);
+  }
+
+  _createClass(ImageBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      return (0, _utils.row)("<img src=\"".concat(this.value, "\" />"), (0, _utils.ObjToCss)(this.options.styles));
+    }
+  }]);
+
+  return ImageBlock;
+}(Block);
+
+exports.ImageBlock = ImageBlock;
+},{"../utils":"utils.js"}],"model.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.model = void 0;
+
+var _blocks = require("./classes/blocks");
+
+var model = [new _blocks.TitleBlock('Конструктор сайтов на JS', {
+  tag: 'h2',
+  styles: {
+    // Инлайн стили
+    background: 'linear-gradient(to right, #ff0099, #493240)',
+    color: '#fff',
+    padding: '1.5rem',
+    'text-align': 'center'
+  }
+}), new _blocks.TextBlock('Текст, да? Точно. Тогда ладно.', {
+  styles: {
+    // Инлайн стили
+    'background-color': '#fff',
+    color: '#000',
+    padding: '1.1rem',
+    border: '1px solid black',
+    'text-align': 'center'
+  }
+}), new _blocks.ColumnsBlock(['Первый блок', 'Второй блок', 'Третий блок', 'Четвертый блок'], {
+  styles: {
+    row: {
+      // Инлайн стили
+      'background-color': '#fff',
+      color: '#000',
+      padding: '5px',
+      height: '200px',
+      border: '1px solid black',
+      'text-align': 'center',
+      margin: '20px'
+    },
+    col: {
+      'background-color': '#DEDEDE',
+      margin: '5px',
+      'border-radius': '5px'
+    }
+  }
+}), new _blocks.ImageBlock('https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg', {
+  styles: {
+    'background-color': '#fff',
+    border: '1px solid black',
+    'text-align': 'center',
+    display: 'flex',
+    'justify-content': 'center',
+    padding: '20px'
+  }
+})];
+exports.model = model;
+},{"./classes/blocks":"classes/blocks.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -346,22 +438,18 @@ module.hot.accept(reloadCSS);
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
-var _model = require("./model");
+var _blocks = require("./classes/blocks");
 
-var _templates = require("./templates");
+var _model = require("./model");
 
 require("./styles/main.css");
 
 var $site = document.querySelector('#site');
 
 _model.model.forEach(function (block) {
-  var toHTML = _templates.templates[block.type];
-
-  if (toHTML) {
-    $site.insertAdjacentHTML('beforeend', toHTML(block));
-  }
+  $site.insertAdjacentHTML('beforeend', block.toHTML());
 });
-},{"./model":"model.js","./templates":"templates.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./classes/blocks":"classes/blocks.js","./model":"model.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
