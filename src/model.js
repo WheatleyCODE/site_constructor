@@ -1,7 +1,10 @@
+import {Block} from './classes/blocks'
+
 export const model = [
-  { type: 'title',
-    value: 'Конструктор сайтов на JS',
-    options: {
+  new Block(
+    'title',
+    'Конструктор сайтов на JS',
+    {
       tag: 'h2',
       styles: {
         // Инлайн стили
@@ -10,12 +13,13 @@ export const model = [
         padding: '1.5rem',
         'text-align': 'center'
       }
-    },
-  },
+    }
+  ),
 
-  { type: 'text',
-    value: 'Текст, да? Точно. Тогда ладно.',
-    options: {
+  new Block(
+    'text',
+    'Текст, да? Точно. Тогда ладно.',
+    {
       styles: {
         // Инлайн стили
         'background-color': '#fff',
@@ -24,17 +28,18 @@ export const model = [
         border: '1px solid black',
         'text-align': 'center'
       }
-    },
-  },
+    }
+  ),
 
-  { type: 'columns',
-    value: [
+  new Block(
+    'columns', 
+    [
       'Первый блок',
       'Второй блок',
       'Третий блок',
       'Четвертый блок',
     ],
-    options: {
+    {
       styles: {
         row: {
           // Инлайн стили
@@ -52,21 +57,21 @@ export const model = [
           'border-radius': '5px'
         },
       },
-    },
-  },
-
-  { type: 'image',
-  value: 'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg',
-  options: {
-    styles: {
-      'background-color': '#fff',
-      border: '1px solid black',
-      'text-align': 'center',
-      display: 'flex',
-      'justify-content': 'center',
-      padding: '20px',
     }
-  },
-  },
+  ),
 
+  new Block(
+    'image',
+    'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg',
+    {
+      styles: {
+        'background-color': '#fff',
+        border: '1px solid black',
+        'text-align': 'center',
+        display: 'flex',
+        'justify-content': 'center',
+        padding: '20px',
+      }
+    }
+  ),
 ]

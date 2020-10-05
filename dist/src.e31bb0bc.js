@@ -117,77 +117,83 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"model.js":[function(require,module,exports) {
+})({"classes/blocks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Block = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Block = function Block(type, value, options) {
+  _classCallCheck(this, Block);
+
+  this.type = type;
+  this.value = value;
+  this.options = options;
+};
+
+exports.Block = Block;
+},{}],"model.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.model = void 0;
-var model = [{
-  type: 'title',
-  value: 'Конструктор сайтов на JS',
-  options: {
-    tag: 'h2',
-    styles: {
-      // Инлайн стили
-      background: 'linear-gradient(to right, #ff0099, #493240)',
-      color: '#fff',
-      padding: '1.5rem',
-      'text-align': 'center'
-    }
+
+var _blocks = require("./classes/blocks");
+
+var model = [new _blocks.Block('title', 'Конструктор сайтов на JS', {
+  tag: 'h2',
+  styles: {
+    // Инлайн стили
+    background: 'linear-gradient(to right, #ff0099, #493240)',
+    color: '#fff',
+    padding: '1.5rem',
+    'text-align': 'center'
   }
-}, {
-  type: 'text',
-  value: 'Текст, да? Точно. Тогда ладно.',
-  options: {
-    styles: {
+}), new _blocks.Block('text', 'Текст, да? Точно. Тогда ладно.', {
+  styles: {
+    // Инлайн стили
+    'background-color': '#fff',
+    color: '#000',
+    padding: '1.1rem',
+    border: '1px solid black',
+    'text-align': 'center'
+  }
+}), new _blocks.Block('columns', ['Первый блок', 'Второй блок', 'Третий блок', 'Четвертый блок'], {
+  styles: {
+    row: {
       // Инлайн стили
       'background-color': '#fff',
       color: '#000',
-      padding: '1.1rem',
-      border: '1px solid black',
-      'text-align': 'center'
-    }
-  }
-}, {
-  type: 'columns',
-  value: ['Первый блок', 'Второй блок', 'Третий блок', 'Четвертый блок'],
-  options: {
-    styles: {
-      row: {
-        // Инлайн стили
-        'background-color': '#fff',
-        color: '#000',
-        padding: '5px',
-        height: '200px',
-        border: '1px solid black',
-        'text-align': 'center',
-        margin: '20px'
-      },
-      col: {
-        'background-color': '#DEDEDE',
-        margin: '5px',
-        'border-radius': '5px'
-      }
-    }
-  }
-}, {
-  type: 'image',
-  value: 'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg',
-  options: {
-    styles: {
-      'background-color': '#fff',
+      padding: '5px',
+      height: '200px',
       border: '1px solid black',
       'text-align': 'center',
-      display: 'flex',
-      'justify-content': 'center',
-      padding: '20px'
+      margin: '20px'
+    },
+    col: {
+      'background-color': '#DEDEDE',
+      margin: '5px',
+      'border-radius': '5px'
     }
   }
-}];
+}), new _blocks.Block('image', 'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg', {
+  styles: {
+    'background-color': '#fff',
+    border: '1px solid black',
+    'text-align': 'center',
+    display: 'flex',
+    'justify-content': 'center',
+    padding: '20px'
+  }
+})];
 exports.model = model;
-},{}],"utils.js":[function(require,module,exports) {
+},{"./classes/blocks":"classes/blocks.js"}],"utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -383,7 +389,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62674" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62933" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
