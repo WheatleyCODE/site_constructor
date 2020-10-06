@@ -3,16 +3,18 @@ import { TextBlock, TitleBlock } from './blocks'
 
 const temModel = {
   title: {
-    info: {
-      text: 'Цвет заголовка',
-    },
-    arr: [
-      { text: 'Красный',styles: 'color: red', },
-      { text: 'Черный',styles: 'color: black', },
-      { text: 'Желтый', styles: 'color: yellow', },
-      { text: 'Розовый', styles: 'color: pink', },
-      { text: 'Синий', styles: 'color: blue', },
-    ]
+    titleColor: {
+      info: {
+        text: 'Цвет заголовка',
+      },
+      arr: [
+        { text: 'Красный',styles: 'color: red', },
+        { text: 'Черный',styles: 'color: black', },
+        { text: 'Желтый', styles: 'color: yellow', },
+        { text: 'Розовый', styles: 'color: pink', },
+        { text: 'Синий', styles: 'color: blue', },
+      ]
+    }
   }
 }
 
@@ -30,7 +32,7 @@ export class Sidebar {
 
   get template() {
     return [
-      block('title'),
+      block('title', temModel.title),
     ].join(' ')
   }
 
@@ -51,6 +53,5 @@ export class Sidebar {
 
     this.update(newBlock)
     event.target.value.value = ''
-    event.target.styles.value= ''
   }
 }

@@ -21,7 +21,10 @@ export function ObjToCss(styles = {}) {
   return Object.keys(styles).map(toString).join(';')
 }
 
-export function block(type) {
+export function block(type, options) {
+  const { arr, info } = options.titleColor
+  console.log(arr, info)
+  const option = arr.map(obj => `<option value="${obj.styles}">${obj.text}</option>`)
   return `
     <form name="${type}">
       <h5>${type}</h5>
@@ -29,8 +32,9 @@ export function block(type) {
         <input class="form-control form-control-sm" name="value" placeholder="value">
       </div>
       <div class="form-group">
+        <p>${info.text}</p>
         <select class="form-control form-control-sm" name="styles" >
-          <option value="color:red">Красный</option>
+          ${option.join(' ')}
         </select>
       </div>
       <button type="submit" class="btn btn-primary btn-sm">Добавить</button>

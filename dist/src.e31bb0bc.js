@@ -157,8 +157,15 @@ function ObjToCss() {
   return Object.keys(styles).map(toString).join(';');
 }
 
-function block(type) {
-  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\">\n      </div>\n      <div class=\"form-group\">\n        <select class=\"form-control form-control-sm\" name=\"styles\" >\n          <option value=\"color:red\">\u041A\u0440\u0430\u0441\u043D\u044B\u0439</option>\n        </select>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
+function block(type, options) {
+  var _options$titleColor = options.titleColor,
+      arr = _options$titleColor.arr,
+      info = _options$titleColor.info;
+  console.log(arr, info);
+  var option = arr.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\">\n      </div>\n      <div class=\"form-group\">\n        <p>").concat(info.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styles\" >\n          ").concat(option.join(' '), "\n        </select>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
 }
 },{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
@@ -332,25 +339,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var temModel = {
   title: {
-    info: {
-      text: 'Цвет заголовка'
-    },
-    arr: [{
-      text: 'Красный',
-      styles: 'color: red'
-    }, {
-      text: 'Черный',
-      styles: 'color: black'
-    }, {
-      text: 'Желтый',
-      styles: 'color: yellow'
-    }, {
-      text: 'Розовый',
-      styles: 'color: pink'
-    }, {
-      text: 'Синий',
-      styles: 'color: blue'
-    }]
+    titleColor: {
+      info: {
+        text: 'Цвет заголовка'
+      },
+      arr: [{
+        text: 'Красный',
+        styles: 'color: red'
+      }, {
+        text: 'Черный',
+        styles: 'color: black'
+      }, {
+        text: 'Желтый',
+        styles: 'color: yellow'
+      }, {
+        text: 'Розовый',
+        styles: 'color: pink'
+      }, {
+        text: 'Синий',
+        styles: 'color: blue'
+      }]
+    }
   }
 };
 
@@ -391,12 +400,11 @@ var Sidebar = /*#__PURE__*/function () {
 
       this.update(newBlock);
       event.target.value.value = '';
-      event.target.styles.value = '';
     }
   }, {
     key: "template",
     get: function get() {
-      return [(0, _utils.block)('title')].join(' ');
+      return [(0, _utils.block)('title', temModel.title)].join(' ');
     }
   }]);
 
@@ -652,7 +660,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62145" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63272" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
