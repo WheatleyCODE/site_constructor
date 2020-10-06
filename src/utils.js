@@ -21,20 +21,39 @@ export function ObjToCss(styles = {}) {
   return Object.keys(styles).map(toString).join(';')
 }
 
-export function block(type, options) {
-  const { arr, info } = options.titleColor
-  console.log(arr, info)
-  const option = arr.map(obj => `<option value="${obj.styles}">${obj.text}</option>`)
+export function blockTitleCreator(type, options) {
+  const { optionColor, infoColor } = options.titleColor
+  const { infoBackground, optionBackground } = options.titleBackground
+  const { infoFontSize, optionFontSize } = options.titleFontSize
+  console.log(infoFontSize, optionFontSize)
+
+  const optionCL = optionColor.map(obj => `<option value="${obj.styles}">${obj.text}</option>`)
+  const optionBG = optionBackground.map(obj => `<option value="${obj.styles}">${obj.text}</option>`)
+  const optionFS = optionFontSize.map(obj => `<option value="${obj.styles}">${obj.text}</option>`)
   return `
     <form name="${type}">
       <h5>${type}</h5>
       <div class="form-group">
-        <input class="form-control form-control-sm" name="value" placeholder="value">
+        <input class="form-control form-control-sm" name="value" placeholder="Текст">
       </div>
       <div class="form-group">
-        <p>${info.text}</p>
-        <select class="form-control form-control-sm" name="styles" >
-          ${option.join(' ')}
+        <p>${infoColor.text}</p>
+        <select class="form-control form-control-sm" name="styleColor" >
+          ${optionCL.join(' ')}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <p>${infoBackground.text}</p>
+        <select class="form-control form-control-sm" name="styleBackground" >
+          ${optionBG.join(' ')}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <p>${infoFontSize.text}</p>
+        <select class="form-control form-control-sm" name="styleFontSize" >
+          ${optionFS.join(' ')}
         </select>
       </div>
       <button type="submit" class="btn btn-primary btn-sm">Добавить</button>

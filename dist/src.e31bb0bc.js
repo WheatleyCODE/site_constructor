@@ -126,7 +126,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.row = row;
 exports.col = col;
 exports.ObjToCss = ObjToCss;
-exports.block = block;
+exports.blockTitleCreator = blockTitleCreator;
 
 function row(content) {
   var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -157,15 +157,27 @@ function ObjToCss() {
   return Object.keys(styles).map(toString).join(';');
 }
 
-function block(type, options) {
+function blockTitleCreator(type, options) {
   var _options$titleColor = options.titleColor,
-      arr = _options$titleColor.arr,
-      info = _options$titleColor.info;
-  console.log(arr, info);
-  var option = arr.map(function (obj) {
+      optionColor = _options$titleColor.optionColor,
+      infoColor = _options$titleColor.infoColor;
+  var _options$titleBackgro = options.titleBackground,
+      infoBackground = _options$titleBackgro.infoBackground,
+      optionBackground = _options$titleBackgro.optionBackground;
+  var _options$titleFontSiz = options.titleFontSize,
+      infoFontSize = _options$titleFontSiz.infoFontSize,
+      optionFontSize = _options$titleFontSiz.optionFontSize;
+  console.log(infoFontSize, optionFontSize);
+  var optionCL = optionColor.map(function (obj) {
     return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
   });
-  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\">\n      </div>\n      <div class=\"form-group\">\n        <p>").concat(info.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styles\" >\n          ").concat(option.join(' '), "\n        </select>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
+  var optionBG = optionBackground.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  var optionFS = optionFontSize.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"\u0422\u0435\u043A\u0441\u0442\">\n      </div>\n      <div class=\"form-group\">\n        <p>").concat(infoColor.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleColor\" >\n          ").concat(optionCL.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoBackground.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleBackground\" >\n          ").concat(optionBG.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoFontSize.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleFontSize\" >\n          ").concat(optionFS.join(' '), "\n        </select>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
 }
 },{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
@@ -340,24 +352,66 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var temModel = {
   title: {
     titleColor: {
-      info: {
+      infoColor: {
         text: 'Цвет заголовка'
       },
-      arr: [{
+      optionColor: [{
         text: 'Красный',
-        styles: 'color: red'
+        styles: 'color: red; text-align: center;'
       }, {
         text: 'Черный',
-        styles: 'color: black'
+        styles: 'color: black; text-align: center;'
       }, {
         text: 'Желтый',
-        styles: 'color: yellow'
+        styles: 'color: yellow; text-align: center;'
       }, {
         text: 'Розовый',
-        styles: 'color: pink'
+        styles: 'color: pink; text-align: center;'
       }, {
         text: 'Синий',
-        styles: 'color: blue'
+        styles: 'color: blue; text-align: center;'
+      }]
+    },
+    titleBackground: {
+      infoBackground: {
+        text: 'Цвет фона'
+      },
+      optionBackground: [{
+        text: 'Красный',
+        styles: 'background-color: red;'
+      }, {
+        text: 'Черный',
+        styles: 'background-color: black;'
+      }, {
+        text: 'Желтый',
+        styles: 'background-color: yellow;'
+      }, {
+        text: 'Розовый',
+        styles: 'background-color: pink;'
+      }, {
+        text: 'Синий',
+        styles: 'background-color: blue;'
+      }]
+    },
+    titleFontSize: {
+      infoFontSize: {
+        text: 'Размер шрифта'
+      },
+      optionFontSize: [{
+        text: '10px',
+        styles: 'font-size: 10px;'
+      }, {
+        text: '15px',
+        styles: 'font-size: 15px;'
+      }, {
+        text: '20px',
+        styles: 'font-size: 20px;'
+      }, {
+        text: '25px',
+        styles: 'font-size: 25px;'
+      }, {
+        text: '30px',
+        styles: 'font-size: 30px;'
       }]
     }
   }
@@ -385,15 +439,15 @@ var Sidebar = /*#__PURE__*/function () {
 
       var type = event.target.name;
       var value = event.target.value.value;
-      var styles = event.target.styles.value;
+      var CLstyles = event.target.styleColor.value;
+      var BGstyles = event.target.styleBackground.value;
+      var FSstyles = event.target.styleFontSize.value;
+      var styles = CLstyles + BGstyles + FSstyles;
+      console.log(styles);
       var newBlock;
 
-      if (type === 'title') {
+      if (type === 'Заголовок') {
         newBlock = new _blocks.TitleBlock(value, {
-          styles: styles
-        });
-      } else if (type === 'text') {
-        newBlock = new _blocks.TextBlock(value, {
           styles: styles
         });
       }
@@ -404,7 +458,7 @@ var Sidebar = /*#__PURE__*/function () {
   }, {
     key: "template",
     get: function get() {
-      return [(0, _utils.block)('title', temModel.title)].join(' ');
+      return [(0, _utils.blockTitleCreator)('Заголовок', temModel.title)].join(' ');
     }
   }]);
 
