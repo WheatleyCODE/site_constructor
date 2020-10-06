@@ -29,7 +29,9 @@ export function block(type) {
         <input class="form-control form-control-sm" name="value" placeholder="value">
       </div>
       <div class="form-group">
-        <input class="form-control form-control-sm" name="styles" placeholder="styles">
+        <select class="form-control form-control-sm" name="styles" >
+          <option value="color:red">Красный</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
     </form>
