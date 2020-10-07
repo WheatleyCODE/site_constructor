@@ -127,6 +127,9 @@ exports.row = row;
 exports.col = col;
 exports.ObjToCss = ObjToCss;
 exports.blockTitleCreator = blockTitleCreator;
+exports.blockTextCreator = blockTextCreator;
+exports.blockImageCreator = blockImageCreator;
+exports.blockColumnsCreator = blockColumnsCreator;
 
 function row(content) {
   var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -167,7 +170,6 @@ function blockTitleCreator(type, options) {
   var _options$titleFontSiz = options.titleFontSize,
       infoFontSize = _options$titleFontSiz.infoFontSize,
       optionFontSize = _options$titleFontSiz.optionFontSize;
-  console.log(infoFontSize, optionFontSize);
   var optionCL = optionColor.map(function (obj) {
     return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
   });
@@ -178,6 +180,67 @@ function blockTitleCreator(type, options) {
     return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
   });
   return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"\u0422\u0435\u043A\u0441\u0442\">\n      </div>\n      <div class=\"form-group\">\n        <p>").concat(infoColor.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleColor\" >\n          ").concat(optionCL.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoBackground.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleBackground\" >\n          ").concat(optionBG.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoFontSize.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleFontSize\" >\n          ").concat(optionFS.join(' '), "\n        </select>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
+}
+
+function blockTextCreator(type, options) {
+  var _options$textBackgrou = options.textBackground,
+      optionBackground = _options$textBackgrou.optionBackground,
+      infoBackground = _options$textBackgrou.infoBackground;
+  var _options$textColor = options.textColor,
+      optionColor = _options$textColor.optionColor,
+      infoColor = _options$textColor.infoColor;
+  var optionCL = optionColor.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  var optionBG = optionBackground.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"\u0422\u0435\u043A\u0441\u0442\">\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoColor.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleColor\" >\n          ").concat(optionCL.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoBackground.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleBackground\" >\n          ").concat(optionBG.join(' '), "\n        </select>\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
+}
+
+function blockImageCreator(type, options) {
+  var _options$imageBackgro = options.imageBackground,
+      optionBackground = _options$imageBackgro.optionBackground,
+      infoBackground = _options$imageBackgro.infoBackground;
+  var _options$imageLocatio = options.imageLocation,
+      optionLocation = _options$imageLocatio.optionLocation,
+      infoLocation = _options$imageLocatio.infoLocation;
+  var optionLC = optionLocation.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  var optionBG = optionBackground.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"url\">\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoLocation.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleColor\" >\n          ").concat(optionLC.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoBackground.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleBackground\" >\n            ").concat(optionBG.join(' '), "\n         </select>\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
+}
+
+function blockColumnsCreator(type, options) {
+  var _options$columnsBackg = options.columnsBackground,
+      optionBackground = _options$columnsBackg.optionBackground,
+      infoBackground = _options$columnsBackg.infoBackground;
+  var _options$columnsQuant = options.columnsQuantity,
+      infoQuantity = _options$columnsQuant.infoQuantity,
+      optionQuantity = _options$columnsQuant.optionQuantity;
+  var _options$columnsHeigh = options.columnsHeight,
+      infoHeight = _options$columnsHeigh.infoHeight,
+      optionHeight = _options$columnsHeigh.optionHeight;
+  var _options$columnsColor = options.columnsColor,
+      optionColor = _options$columnsColor.optionColor,
+      infoColor = _options$columnsColor.infoColor;
+  console.log(infoQuantity, optionQuantity);
+  var optionQu = optionQuantity.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  var optionBG = optionBackground.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  var optionHG = optionHeight.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  var optionCL = optionColor.map(function (obj) {
+    return "<option value=\"".concat(obj.styles, "\">").concat(obj.text, "</option>");
+  });
+  return "\n    <form name=\"".concat(type, "\">\n      <h5>").concat(type, "</h5>\n      <div class=\"form-group\">\n        <p>").concat(infoQuantity.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"value\" >\n          ").concat(optionQu.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoBackground.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleBackground\" >\n          ").concat(optionBG.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoHeight.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleHeight\" >\n          ").concat(optionHG.join(' '), "\n        </select>\n      </div>\n\n      <div class=\"form-group\">\n        <p>").concat(infoColor.text, "</p>\n        <select class=\"form-control form-control-sm\" name=\"styleColor\" >\n          ").concat(optionCL.join(' '), "\n        </select>\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n  ");
 }
 },{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
@@ -297,6 +360,7 @@ var ColumnsBlock = /*#__PURE__*/function (_Block3) {
     value: function toHTML() {
       var _this = this;
 
+      console.log(this.options);
       var html = this.value.map(function (value) {
         return (0, _utils.col)("<p>".concat(value, "</p>"), (0, _utils.ObjToCss)(_this.options.styles.col));
       });
@@ -331,229 +395,14 @@ var ImageBlock = /*#__PURE__*/function (_Block4) {
 }(Block);
 
 exports.ImageBlock = ImageBlock;
-},{"../utils":"utils.js"}],"classes/sideBar.js":[function(require,module,exports) {
+},{"../utils":"utils.js"}],"model.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Sidebar = void 0;
-
-var _utils = require("../utils");
-
-var _blocks = require("./blocks");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var temModel = {
-  title: {
-    titleColor: {
-      infoColor: {
-        text: 'Цвет заголовка'
-      },
-      optionColor: [{
-        text: 'Красный',
-        styles: 'color: red; text-align: center;'
-      }, {
-        text: 'Черный',
-        styles: 'color: black; text-align: center;'
-      }, {
-        text: 'Желтый',
-        styles: 'color: yellow; text-align: center;'
-      }, {
-        text: 'Розовый',
-        styles: 'color: pink; text-align: center;'
-      }, {
-        text: 'Синий',
-        styles: 'color: blue; text-align: center;'
-      }]
-    },
-    titleBackground: {
-      infoBackground: {
-        text: 'Цвет фона'
-      },
-      optionBackground: [{
-        text: 'Красный',
-        styles: 'background-color: red;'
-      }, {
-        text: 'Черный',
-        styles: 'background-color: black;'
-      }, {
-        text: 'Желтый',
-        styles: 'background-color: yellow;'
-      }, {
-        text: 'Розовый',
-        styles: 'background-color: pink;'
-      }, {
-        text: 'Синий',
-        styles: 'background-color: blue;'
-      }]
-    },
-    titleFontSize: {
-      infoFontSize: {
-        text: 'Размер шрифта'
-      },
-      optionFontSize: [{
-        text: '10px',
-        styles: 'font-size: 10px;'
-      }, {
-        text: '15px',
-        styles: 'font-size: 15px;'
-      }, {
-        text: '20px',
-        styles: 'font-size: 20px;'
-      }, {
-        text: '25px',
-        styles: 'font-size: 25px;'
-      }, {
-        text: '30px',
-        styles: 'font-size: 30px;'
-      }]
-    }
-  }
-};
-
-var Sidebar = /*#__PURE__*/function () {
-  function Sidebar(selector, updateCallBack) {
-    _classCallCheck(this, Sidebar);
-
-    this.$el = document.querySelector(selector);
-    this.update = updateCallBack;
-    this.init();
-  }
-
-  _createClass(Sidebar, [{
-    key: "init",
-    value: function init() {
-      this.$el.insertAdjacentHTML('afterbegin', this.template);
-      this.$el.addEventListener('submit', this.add.bind(this));
-    }
-  }, {
-    key: "add",
-    value: function add(event) {
-      event.preventDefault(); // event.target - форма
-
-      var type = event.target.name;
-      var value = event.target.value.value;
-      var CLstyles = event.target.styleColor.value;
-      var BGstyles = event.target.styleBackground.value;
-      var FSstyles = event.target.styleFontSize.value;
-      var styles = CLstyles + BGstyles + FSstyles;
-      console.log(styles);
-      var newBlock;
-
-      if (type === 'Заголовок') {
-        newBlock = new _blocks.TitleBlock(value, {
-          styles: styles
-        });
-      }
-
-      this.update(newBlock);
-      event.target.value.value = '';
-    }
-  }, {
-    key: "template",
-    get: function get() {
-      return [(0, _utils.blockTitleCreator)('Заголовок', temModel.title)].join(' ');
-    }
-  }]);
-
-  return Sidebar;
-}();
-
-exports.Sidebar = Sidebar;
-},{"../utils":"utils.js","./blocks":"classes/blocks.js"}],"classes/site.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Site = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Site = /*#__PURE__*/function () {
-  function Site(selector) {
-    _classCallCheck(this, Site);
-
-    this.$el = document.querySelector(selector);
-  }
-
-  _createClass(Site, [{
-    key: "render",
-    value: function render(model) {
-      var _this = this;
-
-      this.$el.innerHTML = '';
-      model.forEach(function (block) {
-        _this.$el.insertAdjacentHTML('beforeend', block.toHTML());
-      });
-    }
-  }]);
-
-  return Site;
-}();
-
-exports.Site = Site;
-},{}],"classes/app.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.App = void 0;
-
-var _sideBar = require("./sideBar");
-
-var _site = require("./site");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var App = /*#__PURE__*/function () {
-  function App(model) {
-    _classCallCheck(this, App);
-
-    this.model = model;
-  }
-
-  _createClass(App, [{
-    key: "itit",
-    value: function itit() {
-      var _this = this;
-
-      var site = new _site.Site('#site');
-      site.render(this.model);
-      new _sideBar.Sidebar('#panel', function (newBlock) {
-        _this.model.push(newBlock);
-
-        site.render(_this.model);
-      });
-    }
-  }]);
-
-  return App;
-}();
-
-exports.App = App;
-},{"./sideBar":"classes/sideBar.js","./site":"classes/site.js"}],"model.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.model = void 0;
+exports.resetModel = resetModel;
+exports.creationTemplate = exports.model = void 0;
 
 var _blocks = require("./classes/blocks");
 
@@ -604,7 +453,425 @@ var model = [new _blocks.TitleBlock('Конструктор сайтов на JS
   }
 })];
 exports.model = model;
-},{"./classes/blocks":"classes/blocks.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+
+function resetModel() {
+  exports.model = model = [];
+}
+
+var creationTemplate = {
+  title: {
+    titleColor: {
+      infoColor: {
+        text: 'Цвет заголовка'
+      },
+      optionColor: [{
+        text: 'Черный',
+        styles: 'color: black; text-align: center;'
+      }, {
+        text: 'Красный',
+        styles: 'color: red; text-align: center;'
+      }, {
+        text: 'Желтый',
+        styles: 'color: yellow; text-align: center;'
+      }, {
+        text: 'Розовый',
+        styles: 'color: pink; text-align: center;'
+      }, {
+        text: 'Синий',
+        styles: 'color: blue; text-align: center;'
+      }]
+    },
+    titleBackground: {
+      infoBackground: {
+        text: 'Цвет фона'
+      },
+      optionBackground: [{
+        text: 'Нет',
+        styles: 'background-color: none;'
+      }, {
+        text: 'Черный',
+        styles: 'background-color: black;'
+      }, {
+        text: 'Желтый',
+        styles: 'background-color: yellow;'
+      }, {
+        text: 'Розовый',
+        styles: 'background-color: pink;'
+      }, {
+        text: 'Синий',
+        styles: 'background-color: blue;'
+      }]
+    },
+    titleFontSize: {
+      infoFontSize: {
+        text: 'Размер шрифта'
+      },
+      optionFontSize: [{
+        text: 'h1',
+        styles: 'h1'
+      }, {
+        text: 'h2',
+        styles: 'h2'
+      }, {
+        text: 'h3',
+        styles: 'h3'
+      }, {
+        text: 'h4',
+        styles: 'h4'
+      }, {
+        text: 'h5',
+        styles: 'h5'
+      }]
+    }
+  },
+  text: {
+    textColor: {
+      infoColor: {
+        text: 'Цвет текста'
+      },
+      optionColor: [{
+        text: 'Черный',
+        styles: 'color: black; text-align: center;'
+      }, {
+        text: 'Красный',
+        styles: 'color: red; text-align: center;'
+      }, {
+        text: 'Желтый',
+        styles: 'color: yellow; text-align: center;'
+      }, {
+        text: 'Розовый',
+        styles: 'color: pink; text-align: center;'
+      }, {
+        text: 'Синий',
+        styles: 'color: blue; text-align: center;'
+      }]
+    },
+    textBackground: {
+      infoBackground: {
+        text: 'Цвет фона'
+      },
+      optionBackground: [{
+        text: 'Нет',
+        styles: 'background-color: none;'
+      }, {
+        text: 'Черный',
+        styles: 'background-color: black;'
+      }, {
+        text: 'Желтый',
+        styles: 'background-color: yellow;'
+      }, {
+        text: 'Розовый',
+        styles: 'background-color: pink;'
+      }, {
+        text: 'Синий',
+        styles: 'background-color: blue;'
+      }]
+    }
+  },
+  image: {
+    imageLocation: {
+      infoLocation: {
+        text: 'Расположение'
+      },
+      optionLocation: [{
+        text: 'Слева',
+        styles: 'justify-content: flex-start;'
+      }, {
+        text: 'Справа',
+        styles: 'display: flex;justify-content: flex-end;'
+      }, {
+        text: 'По центру',
+        styles: 'display: flex;justify-content: center;'
+      }]
+    },
+    imageBackground: {
+      infoBackground: {
+        text: 'Цвет фона'
+      },
+      optionBackground: [{
+        text: 'Нет',
+        styles: 'background-color: none;'
+      }, {
+        text: 'Черный',
+        styles: 'background-color: black;'
+      }, {
+        text: 'Желтый',
+        styles: 'background-color: yellow;'
+      }, {
+        text: 'Розовый',
+        styles: 'background-color: pink;'
+      }, {
+        text: 'Синий',
+        styles: 'background-color: blue;'
+      }]
+    }
+  },
+  columns: {
+    columnsQuantity: {
+      infoQuantity: {
+        text: 'Количетво колонок'
+      },
+      optionQuantity: [{
+        text: 'Одна',
+        styles: "['Первый блок',]"
+      }, {
+        text: 'Две',
+        styles: "['Первый блок', 'Второй блок',]"
+      }, {
+        text: 'Три',
+        styles: "['Первый блок', 'Второй блок','Третий блок',]"
+      }, {
+        text: 'Четыре',
+        styles: "['Первый блок', 'Второй блок','Третий блок', 'Четвертый блок',]"
+      }]
+    },
+    columnsHeight: {
+      infoHeight: {
+        text: 'Высота колонок'
+      },
+      optionHeight: [{
+        text: '200px',
+        styles: "200px"
+      }, {
+        text: '300px',
+        styles: "300px"
+      }, {
+        text: '400px',
+        styles: "400px"
+      }, {
+        text: '500px',
+        styles: "500px"
+      }]
+    },
+    columnsBackground: {
+      infoBackground: {
+        text: 'Цвет фона'
+      },
+      optionBackground: [{
+        text: 'Нет',
+        styles: 'none;'
+      }, {
+        text: 'Черный',
+        styles: 'black;'
+      }, {
+        text: 'Желтый',
+        styles: 'yellow;'
+      }, {
+        text: 'Розовый',
+        styles: 'pink;'
+      }, {
+        text: 'Синий',
+        styles: 'blue;'
+      }]
+    },
+    columnsColor: {
+      infoColor: {
+        text: 'Цвет текста'
+      },
+      optionColor: [{
+        text: 'Черный',
+        styles: 'black'
+      }, {
+        text: 'Красный',
+        styles: 'red'
+      }, {
+        text: 'Желтый',
+        styles: 'yellow'
+      }, {
+        text: 'Розовый',
+        styles: 'pink'
+      }, {
+        text: 'Синий',
+        styles: 'blue'
+      }]
+    }
+  }
+};
+exports.creationTemplate = creationTemplate;
+},{"./classes/blocks":"classes/blocks.js"}],"classes/sideBar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Sidebar = void 0;
+
+var _model = require("../model");
+
+var _utils = require("../utils");
+
+var _blocks = require("./blocks");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Sidebar = /*#__PURE__*/function () {
+  function Sidebar(selector, updateCallBack) {
+    _classCallCheck(this, Sidebar);
+
+    this.$el = document.querySelector(selector);
+    this.update = updateCallBack;
+    this.init();
+  }
+
+  _createClass(Sidebar, [{
+    key: "init",
+    value: function init() {
+      this.$el.insertAdjacentHTML('afterbegin', this.template);
+      this.$el.addEventListener('submit', this.add.bind(this));
+    }
+  }, {
+    key: "add",
+    value: function add(event) {
+      event.preventDefault(); // event.target - форма
+
+      var type = event.target.name;
+      var value = event.target.value.value;
+      var CLstyles = event.target.styleColor.value;
+      var BGstyles = event.target.styleBackground.value;
+      var styles = CLstyles + BGstyles;
+      var newBlock;
+
+      if (type === 'Заголовок') {
+        var FStag = event.target.styleFontSize.value;
+        newBlock = new _blocks.TitleBlock(value, {
+          styles: styles,
+          tag: FStag
+        });
+      } else if (type === 'Текст') {
+        newBlock = new _blocks.TextBlock(value, {
+          styles: styles
+        });
+      } else if (type === 'Картинка') {
+        newBlock = new _blocks.ImageBlock(value, {
+          styles: styles
+        });
+      } else if (type === 'Колонки') {
+        var valueTest = eval('(' + value + ')');
+        var HGstyles = event.target.styleHeight.value;
+        var obj = eval("({styles:{ row: {height: '".concat(HGstyles, "', 'text-align': 'center', 'background-color': '#fff',  margin: '20px',}, col: {'background-color': '").concat(BGstyles, "',color: '").concat(CLstyles, "', margin: '5px', 'border-radius': '5px'}}})")); // const styleTest = eval('(' + styles + ')')
+        // const styleTest = {
+        //   styles: {
+        //     row: {
+        //       'background-color': '#fff',
+        //       padding: '5px',
+        //       height: '400px',
+        //       'text-align': 'center',
+        //       margin: '20px',
+        //     },
+        //     col: {
+        //       'background-color': '#DEDEDE',
+        //       margin: '5px',
+        //       'border-radius': '5px'
+        //     },
+        //   }
+        // }
+
+        newBlock = new _blocks.ColumnsBlock(valueTest, obj);
+      }
+
+      this.update(newBlock);
+      event.target.value.value = '';
+    }
+  }, {
+    key: "template",
+    get: function get() {
+      return [(0, _utils.blockTitleCreator)('Заголовок', _model.creationTemplate.title), (0, _utils.blockTextCreator)('Текст', _model.creationTemplate.text), (0, _utils.blockImageCreator)('Картинка', _model.creationTemplate.image), (0, _utils.blockColumnsCreator)('Колонки', _model.creationTemplate.columns)].join(' ');
+    }
+  }]);
+
+  return Sidebar;
+}();
+
+exports.Sidebar = Sidebar;
+},{"../model":"model.js","../utils":"utils.js","./blocks":"classes/blocks.js"}],"classes/site.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Site = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Site = /*#__PURE__*/function () {
+  function Site(selector) {
+    _classCallCheck(this, Site);
+
+    this.$el = document.querySelector(selector);
+  }
+
+  _createClass(Site, [{
+    key: "render",
+    value: function render(model) {
+      var _this = this;
+
+      this.$el.innerHTML = '';
+      model.forEach(function (block) {
+        _this.$el.insertAdjacentHTML('beforeend', block.toHTML());
+      });
+    }
+  }]);
+
+  return Site;
+}();
+
+exports.Site = Site;
+},{}],"classes/app.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.App = void 0;
+
+var _sideBar = require("./sideBar");
+
+var _site = require("./site");
+
+var _model = require("../model");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var App = /*#__PURE__*/function () {
+  function App(model) {
+    _classCallCheck(this, App);
+
+    this.model = model;
+  }
+
+  _createClass(App, [{
+    key: "itit",
+    value: function itit() {
+      var _this = this;
+
+      var site = new _site.Site('#site');
+      site.render(this.model);
+      this.model = [];
+      new _sideBar.Sidebar('#panel', function (newBlock) {
+        _this.model.push(newBlock);
+
+        site.render(_this.model);
+      });
+    }
+  }]);
+
+  return App;
+}();
+
+exports.App = App;
+},{"./sideBar":"classes/sideBar.js","./site":"classes/site.js","../model":"model.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -714,7 +981,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63272" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61139" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

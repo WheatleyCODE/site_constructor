@@ -1,46 +1,6 @@
-import { blockTitleCreator } from '../utils'
-import { TextBlock, TitleBlock } from './blocks'
-
-const temModel = {
-  title: {
-    titleColor: {
-      infoColor: {
-        text: 'Цвет заголовка',
-      },
-      optionColor: [
-        { text: 'Красный',styles: 'color: red; text-align: center;', },
-        { text: 'Черный',styles: 'color: black; text-align: center;', },
-        { text: 'Желтый', styles: 'color: yellow; text-align: center;', },
-        { text: 'Розовый', styles: 'color: pink; text-align: center;', },
-        { text: 'Синий', styles: 'color: blue; text-align: center;', },
-      ]
-    },
-    titleBackground: {
-      infoBackground: {
-        text: 'Цвет фона',
-      },
-      optionBackground: [
-        { text: 'Красный',styles: 'background-color: red;', },
-        { text: 'Черный',styles: 'background-color: black;', },
-        { text: 'Желтый', styles: 'background-color: yellow;', },
-        { text: 'Розовый', styles: 'background-color: pink;', },
-        { text: 'Синий', styles: 'background-color: blue;', },
-      ]
-    },
-    titleFontSize: {
-      infoFontSize: {
-        text: 'Размер шрифта',
-      },
-      optionFontSize: [
-        { text: '10px', styles: 'font-size: 10px;', },
-        { text: '15px', styles: 'font-size: 15px;', },
-        { text: '20px', styles: 'font-size: 20px;', },
-        { text: '25px', styles: 'font-size: 25px;', },
-        { text: '30px', styles: 'font-size: 30px;', },
-      ]
-    }
-  }
-}
+import { creationTemplate } from '../model'
+import { blockTitleCreator, blockTextCreator, blockImageCreator, blockColumnsCreator } from '../utils'
+import { TextBlock, TitleBlock, ImageBlock, ColumnsBlock } from './blocks'
 
 export class Sidebar {
   constructor(selector, updateCallBack) {
@@ -56,7 +16,10 @@ export class Sidebar {
 
   get template() {
     return [
-      blockTitleCreator('Заголовок', temModel.title),
+      blockTitleCreator('Заголовок', creationTemplate.title),
+      blockTextCreator('Текст', creationTemplate.text),
+      blockImageCreator('Картинка', creationTemplate.image),
+      blockColumnsCreator('Колонки', creationTemplate.columns),
     ].join(' ')
   }
 
@@ -67,16 +30,43 @@ export class Sidebar {
     const value = event.target.value.value
     const CLstyles = event.target.styleColor.value
     const BGstyles = event.target.styleBackground.value
-    const FSstyles = event.target.styleFontSize.value
-
-    const styles = CLstyles + BGstyles + FSstyles
-    console.log(styles)
+    const styles = CLstyles + BGstyles
     
-
     let newBlock
+
     if (type === 'Заголовок') {
-      newBlock = new TitleBlock(value, {styles})
-    } 
+      const FStag = event.target.styleFontSize.value
+      newBlock = new TitleBlock(value, {styles, tag: FStag})
+    } else if  (type === 'Текст') {
+      newBlock = new TextBlock(value, {styles})
+    } else if (type === 'Картинка') {
+      newBlock = new ImageBlock(value, {styles})
+    } else if ( type === 'Колонки') {
+      const valueTest = eval('(' + value + ')')
+      const HGstyles = event.target.styleHeight.value
+      
+      const obj = eval(`({styles:{ row: {height: '${HGstyles}', 'text-align': 'center', 'background-color': '#fff',  margin: '20px',}, col: {'background-color': '${BGstyles}',color: '${CLstyles}', margin: '5px', 'border-radius': '5px'}}})`);
+      // const styleTest = eval('(' + styles + ')')
+
+      // const styleTest = {
+      //   styles: {
+      //     row: {
+      //       'background-color': '#fff',
+      //       padding: '5px',
+      //       height: '400px',
+      //       'text-align': 'center',
+      //       margin: '20px',
+      //     },
+      //     col: {
+      //       'background-color': '#DEDEDE',
+      //       margin: '5px',
+      //       'border-radius': '5px'
+      //     },
+      //   }
+      // }
+
+      newBlock = new ColumnsBlock(valueTest, obj)
+    }
     
     this.update(newBlock)
     event.target.value.value = ''
