@@ -1,6 +1,16 @@
 import { creationTemplate } from '../model'
-import { blockTitleCreator, blockTextCreator, blockImageCreator, blockColumnsCreator } from '../utils'
-import { TextBlock, TitleBlock, ImageBlock, ColumnsBlock } from './blocks'
+import {
+  blockTitleCreator,
+  blockTextCreator,
+  blockImageCreator,
+  blockColumnsCreator
+} from '../utils'
+import {
+  TextBlock,
+  TitleBlock,
+  ImageBlock,
+  ColumnsBlock
+} from './blocks'
 
 export class Sidebar {
   constructor(selector, updateCallBack) {
@@ -46,25 +56,7 @@ export class Sidebar {
       const HGstyles = event.target.styleHeight.value
       
       const obj = eval(`({styles:{ row: {height: '${HGstyles}', 'text-align': 'center', 'background-color': '#fff',  margin: '20px',}, col: {'background-color': '${BGstyles}',color: '${CLstyles}', margin: '5px', 'border-radius': '5px'}}})`);
-      // const styleTest = eval('(' + styles + ')')
-
-      // const styleTest = {
-      //   styles: {
-      //     row: {
-      //       'background-color': '#fff',
-      //       padding: '5px',
-      //       height: '400px',
-      //       'text-align': 'center',
-      //       margin: '20px',
-      //     },
-      //     col: {
-      //       'background-color': '#DEDEDE',
-      //       margin: '5px',
-      //       'border-radius': '5px'
-      //     },
-      //   }
-      // }
-
+      
       newBlock = new ColumnsBlock(valueTest, obj)
     }
     

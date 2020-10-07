@@ -7,13 +7,6 @@ export function col(content, styles = '') {
 }
 
 export function ObjToCss(styles = {}) {
-  // const keys = Object.keys(styles)
-  // const array = keys.map((key) => {
-  //   return `${key}: ${styles[key]}`
-  // })
-  // console.log(array.join(';'))
-  // return array.join(';')
-
   // Супер сокращение.
   // return Object.keys(styles).map(key => `${key}: ${styles[key]}`).join(';')
   if (typeof styles === 'string')  return styles

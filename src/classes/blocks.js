@@ -34,7 +34,6 @@ export class ColumnsBlock extends Block {
     super(value, options)
   }
   toHTML() {
-    console.log(this.options)
     const html = this.value.map(value => col(`<p>${value}</p>` , ObjToCss(this.options.styles.col)))
     return row( html.join(' '), ObjToCss(this.options.styles.row) )
   }

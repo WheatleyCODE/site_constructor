@@ -1,7 +1,6 @@
 
 import { Sidebar } from "./sideBar"
 import { Site } from "./site"
-import { resetModel, model } from "../model"
 
 export class App {
   constructor(model) {
@@ -18,5 +17,4 @@ export class App {
       site.render(this.model)
     })
   }
-
 }

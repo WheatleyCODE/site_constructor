@@ -1,5 +1,4 @@
-import {Block} from './classes/blocks'
-import {TitleBlock, TextBlock, ColumnsBlock, ImageBlock} from './classes/blocks'
+import {TitleBlock, TextBlock, ColumnsBlock, ImageBlock, modalBlock} from './classes/blocks'
 
 export let model = [
   new TitleBlock(
@@ -11,7 +10,7 @@ export let model = [
         background: 'linear-gradient(to right, #ff0099, #493240)',
         color: '#fff',
         padding: '1.5rem',
-        'text-align': 'center'
+        'text-align': 'center',
       }
     }
   ),
@@ -25,7 +24,7 @@ export let model = [
         color: '#000',
         padding: '1.1rem',
         border: '1px solid black',
-        'text-align': 'center'
+        'text-align': 'center',
       }
     }
   ),
@@ -52,7 +51,7 @@ export let model = [
         col: {
           'background-color': '#DEDEDE',
           margin: '5px',
-          'border-radius': '5px'
+          'border-radius': '5px',
         },
       },
     }
@@ -71,9 +70,10 @@ export let model = [
       }
     }
   ),
+
 ]
 
-export function resetModel(){
+export function resetModel() {
   model = []
 }
 
@@ -85,7 +85,9 @@ export function resetModel(){
       },
       optionColor: [
         { text: 'Черный',styles: 'color: black; text-align: center;', },
+        { text: 'Белый',styles: 'color: white; text-align: center;', },
         { text: 'Красный',styles: 'color: red; text-align: center;', },
+        { text: 'Зелёный',styles: 'color: green; text-align: center;', },
         { text: 'Желтый', styles: 'color: yellow; text-align: center;', },
         { text: 'Розовый', styles: 'color: pink; text-align: center;', },
         { text: 'Синий', styles: 'color: blue; text-align: center;', },
@@ -97,10 +99,10 @@ export function resetModel(){
       },
       optionBackground: [
         { text: 'Нет',styles: 'background-color: none;', },
-        { text: 'Черный',styles: 'background-color: black;', },
-        { text: 'Желтый', styles: 'background-color: yellow;', },
-        { text: 'Розовый', styles: 'background-color: pink;', },
-        { text: 'Синий', styles: 'background-color: blue;', },
+        { text: 'Черный',styles: 'background-color: #2B2B2B;', },
+        { text: 'Желтый', styles: 'background-color: #F1EE65;', },
+        { text: 'Розовый', styles: 'background-color: #EA66AC;', },
+        { text: 'Синий', styles: 'background-color: #453BED;', },
       ]
     },
     titleFontSize: {
@@ -124,7 +126,9 @@ export function resetModel(){
       },
       optionColor: [
         { text: 'Черный',styles: 'color: black; text-align: center;', },
+        { text: 'Белый',styles: 'color: white; text-align: center;', },
         { text: 'Красный',styles: 'color: red; text-align: center;', },
+        { text: 'Зелёный',styles: 'color: green; text-align: center;', },
         { text: 'Желтый', styles: 'color: yellow; text-align: center;', },
         { text: 'Розовый', styles: 'color: pink; text-align: center;', },
         { text: 'Синий', styles: 'color: blue; text-align: center;', },
@@ -136,10 +140,10 @@ export function resetModel(){
       },
       optionBackground: [
         { text: 'Нет',styles: 'background-color: none;', },
-        { text: 'Черный',styles: 'background-color: black;', },
-        { text: 'Желтый', styles: 'background-color: yellow;', },
-        { text: 'Розовый', styles: 'background-color: pink;', },
-        { text: 'Синий', styles: 'background-color: blue;', },
+        { text: 'Черный',styles: 'background-color: #2B2B2B;', },
+        { text: 'Желтый', styles: 'background-color: #F1EE65;', },
+        { text: 'Розовый', styles: 'background-color: #EA66AC;', },
+        { text: 'Синий', styles: 'background-color: #453BED;', },
       ]
     }
   },
@@ -161,10 +165,10 @@ export function resetModel(){
       },
       optionBackground: [
         { text: 'Нет',styles: 'background-color: none;', },
-        { text: 'Черный',styles: 'background-color: black;', },
-        { text: 'Желтый', styles: 'background-color: yellow;', },
-        { text: 'Розовый', styles: 'background-color: pink;', },
-        { text: 'Синий', styles: 'background-color: blue;', },
+        { text: 'Черный',styles: 'background-color: #2B2B2B;', },
+        { text: 'Желтый', styles: 'background-color: #F1EE65;', },
+        { text: 'Розовый', styles: 'background-color: #EA66AC;', },
+        { text: 'Синий', styles: 'background-color: #453BED;', },
       ]
     }
   },
@@ -175,10 +179,10 @@ export function resetModel(){
         text: 'Количетво колонок',
       },
       optionQuantity: [
-        { text: 'Одна',styles: "['Первый блок',]", },
-        { text: 'Две',styles: "['Первый блок', 'Второй блок',]", },
-        { text: 'Три', styles: "['Первый блок', 'Второй блок','Третий блок',]", },
-        { text: 'Четыре', styles: "['Первый блок', 'Второй блок','Третий блок', 'Четвертый блок',]", },
+        { text: '1',styles: "['Первый блок',]", },
+        { text: '2',styles: "['Первый блок', 'Второй блок',]", },
+        { text: '3', styles: "['Первый блок', 'Второй блок','Третий блок',]", },
+        { text: '4', styles: "['Первый блок', 'Второй блок','Третий блок', 'Четвертый блок',]", },
       ]
     },
     columnsHeight: {
@@ -198,10 +202,10 @@ export function resetModel(){
       },
       optionBackground: [
         { text: 'Нет',styles: 'none;', },
-        { text: 'Черный',styles: 'black;', },
-        { text: 'Желтый', styles: 'yellow;', },
-        { text: 'Розовый', styles: 'pink;', },
-        { text: 'Синий', styles: 'blue;', },
+        { text: 'Черный',styles: '#2B2B2B;', },
+        { text: 'Желтый', styles: '#F1EE65;', },
+        { text: 'Розовый', styles: '#EA66AC;', },
+        { text: 'Синий', styles: '#453BED;', },
       ]
     },
 
