@@ -4,6 +4,13 @@
 .row {
   margin-right: 0;
 }
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+body {
+  background-color: #e9e9e9;
+}
 .content {
   position: absolute;
   top: 0;

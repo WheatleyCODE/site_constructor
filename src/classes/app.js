@@ -1,4 +1,3 @@
-
 import { Sidebar } from "./sideBar"
 import { Site } from "./site"
 
@@ -11,10 +10,13 @@ export class App {
     const site = new Site('#site')
   
     site.render(this.model)
-    this.model = []
+    // this.model = []
     new Sidebar('#panel', newBlock => {
       this.model.push(newBlock)
       site.render(this.model)
     })
   }
 }
+
+const resetButton = document.querySelector('#reset')
+resetButton.addEventListener('click', () => location = location)

@@ -399,21 +399,31 @@ exports.creationTemplate = exports.model = void 0;
 
 var _blocks = require("./classes/blocks");
 
-var model = [new _blocks.TitleBlock('Конструктор сайтов на JS', {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var COLOR_BLACK = '#1d2124';
+var COLOR_WHITE = '#f8f9fa';
+var COLOR_GREY = '#6c757d';
+var COLOR_BLUE = '#007bff';
+var COLOR_TURQUOISE = '#17a2b8';
+var COLOR_GREEN = '#28a745';
+var COLOR_RED = '#dc3545';
+var COLOR_YELLOW = '#ffc107';
+var model = [new _blocks.TitleBlock('Конструктор сайтов на JS!', {
   tag: 'h2',
   styles: {
     // Инлайн стили
-    background: 'linear-gradient(to right, #ff0099, #493240)',
-    color: '#fff',
+    background: "linear-gradient(to right, ".concat(COLOR_BLUE, ", ").concat(COLOR_RED, ")"),
+    color: COLOR_WHITE,
     padding: '1.5rem',
     'text-align': 'center'
   }
 }), new _blocks.TextBlock('Текст, да? Точно. Тогда ладно.', {
   styles: {
     // Инлайн стили
-    'background-color': '#fff',
-    color: '#000',
-    padding: '1.1rem',
+    'background-color': COLOR_WHITE,
+    color: COLOR_BLACK,
+    padding: '10px',
     border: '1px solid black',
     'text-align': 'center'
   }
@@ -421,29 +431,30 @@ var model = [new _blocks.TitleBlock('Конструктор сайтов на JS
   styles: {
     row: {
       // Инлайн стили
-      'background-color': '#fff',
-      color: '#000',
+      'background-color': COLOR_WHITE,
+      color: COLOR_BLACK,
       padding: '5px',
       height: '200px',
       border: '1px solid black',
       'text-align': 'center',
-      margin: '20px'
+      margin: '20px',
+      display: 'none'
     },
     col: {
-      'background-color': '#DEDEDE',
+      'background-color': COLOR_GREY,
       margin: '5px',
       'border-radius': '5px'
     }
   }
 }), new _blocks.ImageBlock('https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg', {
-  styles: {
-    'background-color': '#fff',
+  styles: _defineProperty({
+    'background-color': COLOR_WHITE,
     border: '1px solid black',
     'text-align': 'center',
     display: 'flex',
     'justify-content': 'center',
     padding: '20px'
-  }
+  }, "display", 'none')
 })];
 exports.model = model;
 
@@ -459,25 +470,28 @@ var creationTemplate = {
       },
       optionColor: [{
         text: 'Черный',
-        styles: 'color: black; text-align: center;'
+        styles: "color: ".concat(COLOR_BLACK, "; text-align: center;")
       }, {
         text: 'Белый',
-        styles: 'color: white; text-align: center;'
+        styles: "color: ".concat(COLOR_WHITE, "; text-align: center;")
       }, {
-        text: 'Красный',
-        styles: 'color: red; text-align: center;'
-      }, {
-        text: 'Зелёный',
-        styles: 'color: green; text-align: center;'
-      }, {
-        text: 'Желтый',
-        styles: 'color: yellow; text-align: center;'
-      }, {
-        text: 'Розовый',
-        styles: 'color: pink; text-align: center;'
+        text: 'Серый',
+        styles: "color: ".concat(COLOR_GREY, "; text-align: center;")
       }, {
         text: 'Синий',
-        styles: 'color: blue; text-align: center;'
+        styles: "color: ".concat(COLOR_BLUE, "; text-align: center;")
+      }, {
+        text: 'Бирюзовый',
+        styles: "color: ".concat(COLOR_TURQUOISE, "; text-align: center;")
+      }, {
+        text: 'Зелёный',
+        styles: "color: ".concat(COLOR_GREEN, "; text-align: center;")
+      }, {
+        text: 'Красный',
+        styles: "color: ".concat(COLOR_RED, "; text-align: center;")
+      }, {
+        text: 'Желтый',
+        styles: "color: ".concat(COLOR_YELLOW, "; text-align: center;")
       }]
     },
     titleBackground: {
@@ -489,16 +503,28 @@ var creationTemplate = {
         styles: 'background-color: none;'
       }, {
         text: 'Черный',
-        styles: 'background-color: #2B2B2B;'
+        styles: "background-color: ".concat(COLOR_BLACK, ";")
       }, {
-        text: 'Желтый',
-        styles: 'background-color: #F1EE65;'
+        text: 'Белый',
+        styles: "background-color: ".concat(COLOR_WHITE, ";")
       }, {
-        text: 'Розовый',
-        styles: 'background-color: #EA66AC;'
+        text: 'Серый',
+        styles: "background-color: ".concat(COLOR_GREY, ";")
       }, {
         text: 'Синий',
-        styles: 'background-color: #453BED;'
+        styles: "background-color: ".concat(COLOR_BLUE, ";")
+      }, {
+        text: 'Бирюзовый',
+        styles: "background-color: ".concat(COLOR_TURQUOISE, ";")
+      }, {
+        text: 'Зелёный',
+        styles: "background-color: ".concat(COLOR_GREEN, ";")
+      }, {
+        text: 'Красный',
+        styles: "background-color: ".concat(COLOR_RED, ";")
+      }, {
+        text: 'Желтый',
+        styles: "background-color: ".concat(COLOR_YELLOW, ";")
       }]
     },
     titleFontSize: {
@@ -530,25 +556,28 @@ var creationTemplate = {
       },
       optionColor: [{
         text: 'Черный',
-        styles: 'color: black; text-align: center;'
+        styles: "color: ".concat(COLOR_BLACK, "; text-align: center;")
       }, {
         text: 'Белый',
-        styles: 'color: white; text-align: center;'
+        styles: "color: ".concat(COLOR_WHITE, "; text-align: center;")
       }, {
-        text: 'Красный',
-        styles: 'color: red; text-align: center;'
-      }, {
-        text: 'Зелёный',
-        styles: 'color: green; text-align: center;'
-      }, {
-        text: 'Желтый',
-        styles: 'color: yellow; text-align: center;'
-      }, {
-        text: 'Розовый',
-        styles: 'color: pink; text-align: center;'
+        text: 'Серый',
+        styles: "color: ".concat(COLOR_GREY, "; text-align: center;")
       }, {
         text: 'Синий',
-        styles: 'color: blue; text-align: center;'
+        styles: "color: ".concat(COLOR_BLUE, "; text-align: center;")
+      }, {
+        text: 'Бирюзовый',
+        styles: "color: ".concat(COLOR_TURQUOISE, "; text-align: center;")
+      }, {
+        text: 'Зелёный',
+        styles: "color: ".concat(COLOR_GREEN, "; text-align: center;")
+      }, {
+        text: 'Красный',
+        styles: "color: ".concat(COLOR_RED, "; text-align: center;")
+      }, {
+        text: 'Желтый',
+        styles: "color: ".concat(COLOR_YELLOW, "; text-align: center;")
       }]
     },
     textBackground: {
@@ -560,16 +589,28 @@ var creationTemplate = {
         styles: 'background-color: none;'
       }, {
         text: 'Черный',
-        styles: 'background-color: #2B2B2B;'
+        styles: "background-color: ".concat(COLOR_BLACK, ";")
       }, {
-        text: 'Желтый',
-        styles: 'background-color: #F1EE65;'
+        text: 'Белый',
+        styles: "background-color: ".concat(COLOR_WHITE, ";")
       }, {
-        text: 'Розовый',
-        styles: 'background-color: #EA66AC;'
+        text: 'Серый',
+        styles: "background-color: ".concat(COLOR_GREY, ";")
       }, {
         text: 'Синий',
-        styles: 'background-color: #453BED;'
+        styles: "background-color: ".concat(COLOR_BLUE, ";")
+      }, {
+        text: 'Бирюзовый',
+        styles: "background-color: ".concat(COLOR_TURQUOISE, ";")
+      }, {
+        text: 'Зелёный',
+        styles: "background-color: ".concat(COLOR_GREEN, ";")
+      }, {
+        text: 'Красный',
+        styles: "background-color: ".concat(COLOR_RED, ";")
+      }, {
+        text: 'Желтый',
+        styles: "background-color: ".concat(COLOR_YELLOW, ";")
       }]
     }
   },
@@ -598,16 +639,28 @@ var creationTemplate = {
         styles: 'background-color: none;'
       }, {
         text: 'Черный',
-        styles: 'background-color: #2B2B2B;'
+        styles: "background-color: ".concat(COLOR_BLACK, ";")
       }, {
-        text: 'Желтый',
-        styles: 'background-color: #F1EE65;'
+        text: 'Белый',
+        styles: "background-color: ".concat(COLOR_WHITE, ";")
       }, {
-        text: 'Розовый',
-        styles: 'background-color: #EA66AC;'
+        text: 'Серый',
+        styles: "background-color: ".concat(COLOR_GREY, ";")
       }, {
         text: 'Синий',
-        styles: 'background-color: #453BED;'
+        styles: "background-color: ".concat(COLOR_BLUE, ";")
+      }, {
+        text: 'Бирюзовый',
+        styles: "background-color: ".concat(COLOR_TURQUOISE, ";")
+      }, {
+        text: 'Зелёный',
+        styles: "background-color: ".concat(COLOR_GREEN, ";")
+      }, {
+        text: 'Красный',
+        styles: "background-color: ".concat(COLOR_RED, ";")
+      }, {
+        text: 'Желтый',
+        styles: "background-color: ".concat(COLOR_YELLOW, ";")
       }]
     }
   },
@@ -657,16 +710,28 @@ var creationTemplate = {
         styles: 'none;'
       }, {
         text: 'Черный',
-        styles: '#2B2B2B;'
+        styles: COLOR_BLACK
       }, {
-        text: 'Желтый',
-        styles: '#F1EE65;'
+        text: 'Белый',
+        styles: COLOR_WHITE
       }, {
-        text: 'Розовый',
-        styles: '#EA66AC;'
+        text: 'Серый',
+        styles: COLOR_GREY
       }, {
         text: 'Синий',
-        styles: '#453BED;'
+        styles: COLOR_BLUE
+      }, {
+        text: 'Бирюзовый',
+        styles: COLOR_TURQUOISE
+      }, {
+        text: 'Зелёный',
+        styles: COLOR_GREEN
+      }, {
+        text: 'Красный',
+        styles: COLOR_RED
+      }, {
+        text: 'Желтый',
+        styles: COLOR_YELLOW
       }]
     },
     columnsColor: {
@@ -675,19 +740,28 @@ var creationTemplate = {
       },
       optionColor: [{
         text: 'Черный',
-        styles: 'black'
+        styles: COLOR_BLACK
       }, {
-        text: 'Красный',
-        styles: 'red'
+        text: 'Белый',
+        styles: COLOR_WHITE
       }, {
-        text: 'Желтый',
-        styles: 'yellow'
-      }, {
-        text: 'Розовый',
-        styles: 'pink'
+        text: 'Серый',
+        styles: COLOR_GREY
       }, {
         text: 'Синий',
-        styles: 'blue'
+        styles: COLOR_BLUE
+      }, {
+        text: 'Бирюзовый',
+        styles: COLOR_TURQUOISE
+      }, {
+        text: 'Зелёный',
+        styles: COLOR_GREEN
+      }, {
+        text: 'Красный',
+        styles: COLOR_RED
+      }, {
+        text: 'Желтый',
+        styles: COLOR_YELLOW
       }]
     }
   }
@@ -843,8 +917,8 @@ var App = /*#__PURE__*/function () {
       var _this = this;
 
       var site = new _site.Site('#site');
-      site.render(this.model);
-      this.model = [];
+      site.render(this.model); // this.model = []
+
       new _sideBar.Sidebar('#panel', function (newBlock) {
         _this.model.push(newBlock);
 
@@ -857,6 +931,10 @@ var App = /*#__PURE__*/function () {
 }();
 
 exports.App = App;
+var resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', function () {
+  return location = location;
+});
 },{"./sideBar":"classes/sideBar.js","./site":"classes/site.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 

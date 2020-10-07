@@ -1,14 +1,23 @@
 import {TitleBlock, TextBlock, ColumnsBlock, ImageBlock, modalBlock} from './classes/blocks'
 
+const COLOR_BLACK = '#1d2124'
+const COLOR_WHITE = '#f8f9fa'
+const COLOR_GREY = '#6c757d'
+const COLOR_BLUE = '#007bff'
+const COLOR_TURQUOISE = '#17a2b8'
+const COLOR_GREEN = '#28a745'
+const COLOR_RED = '#dc3545'
+const COLOR_YELLOW = '#ffc107'
+
 export let model = [
   new TitleBlock(
-    'Конструктор сайтов на JS',
+    'Конструктор сайтов на JS!',
     {
       tag: 'h2',
       styles: {
         // Инлайн стили
-        background: 'linear-gradient(to right, #ff0099, #493240)',
-        color: '#fff',
+        background: `linear-gradient(to right, ${COLOR_BLUE}, ${COLOR_RED})`,
+        color: COLOR_WHITE,
         padding: '1.5rem',
         'text-align': 'center',
       }
@@ -20,9 +29,9 @@ export let model = [
     {
       styles: {
         // Инлайн стили
-        'background-color': '#fff',
-        color: '#000',
-        padding: '1.1rem',
+        'background-color': COLOR_WHITE,
+        color: COLOR_BLACK,
+        padding: '10px',
         border: '1px solid black',
         'text-align': 'center',
       }
@@ -40,16 +49,17 @@ export let model = [
       styles: {
         row: {
           // Инлайн стили
-          'background-color': '#fff',
-          color: '#000',
+          'background-color': COLOR_WHITE,
+          color: COLOR_BLACK,
           padding: '5px',
           height: '200px',
           border: '1px solid black',
           'text-align': 'center',
           margin: '20px',
+          display: 'none',
         },
         col: {
-          'background-color': '#DEDEDE',
+          'background-color': COLOR_GREY,
           margin: '5px',
           'border-radius': '5px',
         },
@@ -61,12 +71,13 @@ export let model = [
     'https://famousfinds.net/wp-content/uploads/2020/04/google-apple-partnership-may-be-tech-limited-and-more-tech-news-today.jpg',
     {
       styles: {
-        'background-color': '#fff',
+        'background-color': COLOR_WHITE,
         border: '1px solid black',
         'text-align': 'center',
         display: 'flex',
         'justify-content': 'center',
         padding: '20px',
+        display: 'none',
       }
     }
   ),
@@ -84,13 +95,14 @@ export function resetModel() {
         text: 'Цвет заголовка',
       },
       optionColor: [
-        { text: 'Черный',styles: 'color: black; text-align: center;', },
-        { text: 'Белый',styles: 'color: white; text-align: center;', },
-        { text: 'Красный',styles: 'color: red; text-align: center;', },
-        { text: 'Зелёный',styles: 'color: green; text-align: center;', },
-        { text: 'Желтый', styles: 'color: yellow; text-align: center;', },
-        { text: 'Розовый', styles: 'color: pink; text-align: center;', },
-        { text: 'Синий', styles: 'color: blue; text-align: center;', },
+        { text: 'Черный',styles: `color: ${COLOR_BLACK}; text-align: center;`, },
+        { text: 'Белый',styles: `color: ${COLOR_WHITE}; text-align: center;`, },
+        { text: 'Серый',styles: `color: ${COLOR_GREY}; text-align: center;`, },
+        { text: 'Синий', styles: `color: ${COLOR_BLUE}; text-align: center;`, },
+        { text: 'Бирюзовый',styles: `color: ${COLOR_TURQUOISE}; text-align: center;`, },
+        { text: 'Зелёный',styles: `color: ${COLOR_GREEN}; text-align: center;`, },
+        { text: 'Красный',styles: `color: ${COLOR_RED}; text-align: center;`, },
+        { text: 'Желтый', styles: `color: ${COLOR_YELLOW}; text-align: center;`, },
       ]
     },
     titleBackground: {
@@ -99,10 +111,14 @@ export function resetModel() {
       },
       optionBackground: [
         { text: 'Нет',styles: 'background-color: none;', },
-        { text: 'Черный',styles: 'background-color: #2B2B2B;', },
-        { text: 'Желтый', styles: 'background-color: #F1EE65;', },
-        { text: 'Розовый', styles: 'background-color: #EA66AC;', },
-        { text: 'Синий', styles: 'background-color: #453BED;', },
+        { text: 'Черный',styles: `background-color: ${COLOR_BLACK};`, },
+        { text: 'Белый',styles: `background-color: ${COLOR_WHITE};`, },
+        { text: 'Серый',styles: `background-color: ${COLOR_GREY};`, },
+        { text: 'Синий',styles: `background-color: ${COLOR_BLUE};`, },
+        { text: 'Бирюзовый',styles: `background-color: ${COLOR_TURQUOISE};`, },
+        { text: 'Зелёный',styles: `background-color: ${COLOR_GREEN};`, },
+        { text: 'Красный',styles: `background-color: ${COLOR_RED};`, },
+        { text: 'Желтый',styles: `background-color: ${COLOR_YELLOW};`, }, 
       ]
     },
     titleFontSize: {
@@ -125,13 +141,14 @@ export function resetModel() {
         text: 'Цвет текста',
       },
       optionColor: [
-        { text: 'Черный',styles: 'color: black; text-align: center;', },
-        { text: 'Белый',styles: 'color: white; text-align: center;', },
-        { text: 'Красный',styles: 'color: red; text-align: center;', },
-        { text: 'Зелёный',styles: 'color: green; text-align: center;', },
-        { text: 'Желтый', styles: 'color: yellow; text-align: center;', },
-        { text: 'Розовый', styles: 'color: pink; text-align: center;', },
-        { text: 'Синий', styles: 'color: blue; text-align: center;', },
+        { text: 'Черный',styles: `color: ${COLOR_BLACK}; text-align: center;`, },
+        { text: 'Белый',styles: `color: ${COLOR_WHITE}; text-align: center;`, },
+        { text: 'Серый',styles: `color: ${COLOR_GREY}; text-align: center;`, },
+        { text: 'Синий', styles: `color: ${COLOR_BLUE}; text-align: center;`, },
+        { text: 'Бирюзовый',styles: `color: ${COLOR_TURQUOISE}; text-align: center;`, },
+        { text: 'Зелёный',styles: `color: ${COLOR_GREEN}; text-align: center;`, },
+        { text: 'Красный',styles: `color: ${COLOR_RED}; text-align: center;`, },
+        { text: 'Желтый', styles: `color: ${COLOR_YELLOW}; text-align: center;`, },
       ]
     },
     textBackground: {
@@ -140,10 +157,14 @@ export function resetModel() {
       },
       optionBackground: [
         { text: 'Нет',styles: 'background-color: none;', },
-        { text: 'Черный',styles: 'background-color: #2B2B2B;', },
-        { text: 'Желтый', styles: 'background-color: #F1EE65;', },
-        { text: 'Розовый', styles: 'background-color: #EA66AC;', },
-        { text: 'Синий', styles: 'background-color: #453BED;', },
+        { text: 'Черный',styles: `background-color: ${COLOR_BLACK};`, },
+        { text: 'Белый',styles: `background-color: ${COLOR_WHITE};`, },
+        { text: 'Серый',styles: `background-color: ${COLOR_GREY};`, },
+        { text: 'Синий',styles: `background-color: ${COLOR_BLUE};`, },
+        { text: 'Бирюзовый',styles: `background-color: ${COLOR_TURQUOISE};`, },
+        { text: 'Зелёный',styles: `background-color: ${COLOR_GREEN};`, },
+        { text: 'Красный',styles: `background-color: ${COLOR_RED};`, },
+        { text: 'Желтый',styles: `background-color: ${COLOR_YELLOW};`, }, 
       ]
     }
   },
@@ -165,10 +186,14 @@ export function resetModel() {
       },
       optionBackground: [
         { text: 'Нет',styles: 'background-color: none;', },
-        { text: 'Черный',styles: 'background-color: #2B2B2B;', },
-        { text: 'Желтый', styles: 'background-color: #F1EE65;', },
-        { text: 'Розовый', styles: 'background-color: #EA66AC;', },
-        { text: 'Синий', styles: 'background-color: #453BED;', },
+        { text: 'Черный',styles: `background-color: ${COLOR_BLACK};`, },
+        { text: 'Белый',styles: `background-color: ${COLOR_WHITE};`, },
+        { text: 'Серый',styles: `background-color: ${COLOR_GREY};`, },
+        { text: 'Синий',styles: `background-color: ${COLOR_BLUE};`, },
+        { text: 'Бирюзовый',styles: `background-color: ${COLOR_TURQUOISE};`, },
+        { text: 'Зелёный',styles: `background-color: ${COLOR_GREEN};`, },
+        { text: 'Красный',styles: `background-color: ${COLOR_RED};`, },
+        { text: 'Желтый',styles: `background-color: ${COLOR_YELLOW};`, }, 
       ]
     }
   },
@@ -202,10 +227,14 @@ export function resetModel() {
       },
       optionBackground: [
         { text: 'Нет',styles: 'none;', },
-        { text: 'Черный',styles: '#2B2B2B;', },
-        { text: 'Желтый', styles: '#F1EE65;', },
-        { text: 'Розовый', styles: '#EA66AC;', },
-        { text: 'Синий', styles: '#453BED;', },
+        { text: 'Черный',styles: COLOR_BLACK, },
+        { text: 'Белый', styles: COLOR_WHITE, },
+        { text: 'Серый', styles: COLOR_GREY, },
+        { text: 'Синий', styles: COLOR_BLUE, },
+        { text: 'Бирюзовый', styles: COLOR_TURQUOISE, },
+        { text: 'Зелёный', styles: COLOR_GREEN, },
+        { text: 'Красный', styles: COLOR_RED, },
+        { text: 'Желтый', styles: COLOR_YELLOW, },
       ]
     },
 
@@ -214,11 +243,14 @@ export function resetModel() {
         text: 'Цвет текста',
       },
       optionColor: [
-        { text: 'Черный',styles: 'black', },
-        { text: 'Красный',styles: 'red', },
-        { text: 'Желтый', styles: 'yellow', },
-        { text: 'Розовый', styles: 'pink', },
-        { text: 'Синий', styles: 'blue', },
+        { text: 'Черный',styles: COLOR_BLACK, },
+        { text: 'Белый', styles: COLOR_WHITE, },
+        { text: 'Серый', styles: COLOR_GREY, },
+        { text: 'Синий', styles: COLOR_BLUE, },
+        { text: 'Бирюзовый', styles: COLOR_TURQUOISE, },
+        { text: 'Зелёный', styles: COLOR_GREEN, },
+        { text: 'Красный', styles: COLOR_RED, },
+        { text: 'Желтый', styles: COLOR_YELLOW, },
       ]
     },
   }
